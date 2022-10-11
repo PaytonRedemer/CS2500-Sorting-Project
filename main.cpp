@@ -1,21 +1,17 @@
 #include "AlgorithmsSorts.h"
-#include <cstdlib>
-#include <iostream>
+#include <cstddef>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 int main()
 {
-    srand(5);
-    const int SIZE = 100;
-    int arr[SIZE]; 
+    srand(time(NULL));
 
-    for(int i = 0; i < SIZE; i++)
+    int inputs[] = {10, 1000, 10000, 100000, 200000};
+    for(int i = 0; i < 6; i++)
     {
-        arr[i] = rand() % 1000 + 1;
-        std::cout << arr[i] << std::endl;
+        time_insertion_sort(inputs[i]);
+        std::cout << std::endl;
     }
-
-    std::cout << std::endl;
-    insertion_sort(arr, SIZE);
-    for(int i = 0; i < SIZE; i++)
-        std::cout << arr[i] << std::endl;
 }
