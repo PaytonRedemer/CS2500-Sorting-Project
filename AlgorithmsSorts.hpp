@@ -1,7 +1,10 @@
+// Author: Payton Redemer
+// File:
+// Purpose: Contains class functions for AlgorithmsSorts
+
 #include <chrono>
 #include <cstdlib>
 #include <iostream>
-
 
 template <typename T>
 void insertion_sort(T arr[], const int n)

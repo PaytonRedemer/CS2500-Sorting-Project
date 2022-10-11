@@ -1,3 +1,7 @@
+// Author: Payton Redemer
+// File: main.cpp
+// Purpose: main driver for Project 1
+
 #include "AlgorithmsSorts.h"
 #include <cstddef>
 #include <stdio.h>
