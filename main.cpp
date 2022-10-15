@@ -14,7 +14,7 @@ int main()
     srand(time(NULL));
     int inputs[] = {10, 1000, 10000, 100000, 200000};
 
-    for(int i = 0; i < 6; i++)
+    for(int i = 0; i < 5; i++)
     {
         time_insertion_sort(inputs[i]);
         std::cout << std::endl;
