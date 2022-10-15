@@ -12,25 +12,11 @@
 int main()
 {
     srand(time(NULL));
+    int inputs[] = {10, 1000, 10000, 100000, 200000};
 
-    const int n = 10;
-    AlgorithmsSorts<int> arr(n);
-    for(int i = 0; i < n; i++)
+    for(int i = 0; i < 6; i++)
     {
-        arr[i] = i;
+        time_insertion_sort(inputs[i]);
+        std::cout << std::endl;
     }
-
-
-    for(int i = 0; i < n; i++)
-    {
-        std::cout << arr[i] << std::endl;
-    }
-
-
-    // int inputs[] = {10, 1000, 10000, 100000, 200000};
-    // for(int i = 0; i < 6; i++)
-    // {
-    //     time_insertion_sort(inputs[i]);
-    //     std::cout << std::endl;
-    // }
 }

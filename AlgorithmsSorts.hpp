@@ -6,9 +6,27 @@
 #include <cstdlib>
 #include <iostream>
 
+template <typename T>
+AlgorithmsSorts<T>::AlgorithmsSorts(const int size)
+{
+    n = size;
+    arr = new T[size];
+}
 
 template <typename T>
-void insertion_sort(T arr[], const int n)
+AlgorithmsSorts<T>::~AlgorithmsSorts()
+{
+    delete[] arr;
+}
+
+template <typename T>
+T & AlgorithmsSorts<T>::operator[](const int i)
+{
+    return arr[i];
+}
+
+template <typename T>
+void AlgorithmsSorts<T>::insertion_sort()
 {
     T key;
     int i;
@@ -27,7 +45,7 @@ void insertion_sort(T arr[], const int n)
 
 void time_insertion_sort(const int n)
 {
-    int arr[n];
+    AlgorithmsSorts<int> arr(n);
     std::chrono::steady_clock::time_point begin, end; // declare variables for timing sorts
     std::cout << "For n = " << n << std::endl;
 
@@ -38,7 +56,7 @@ void time_insertion_sort(const int n)
         arr[i] = i;
     
     begin = std::chrono::steady_clock::now();
-    insertion_sort(arr,n);
+    arr.insertion_sort();
     end = std::chrono::steady_clock::now();
     std::cout << "Best case: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "[ns]" << std::endl;
     
@@ -49,7 +67,7 @@ void time_insertion_sort(const int n)
         arr[i] = n - i;
     
     begin = std::chrono::steady_clock::now();
-    insertion_sort(arr,n);
+    arr.insertion_sort();
     end = std::chrono::steady_clock::now();
     std::cout << "Worst case: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "[ns]" << std::endl;
 
@@ -59,26 +77,7 @@ void time_insertion_sort(const int n)
         arr[i] = rand() % n;
     
     begin = std::chrono::steady_clock::now();
-    insertion_sort(arr,n);
+    arr.insertion_sort();
     end = std::chrono::steady_clock::now();
     std::cout << "Average case: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "[ns]" << std::endl;
-}
-
-template <typename T>
-AlgorithmsSorts<T>::AlgorithmsSorts(const int size)
-{
-    n = size;
-    arr = new T[size];
-}
-
-template <typename T>
-AlgorithmsSorts<T>::~AlgorithmsSorts()
-{
-    delete[] arr;
-}
-
-template <typename T>
-T & AlgorithmsSorts<T>::operator[](const int i)
-{
-    return arr[i];
 }

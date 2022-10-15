@@ -18,9 +18,9 @@ class AlgorithmsSorts
 
         T & operator[](const int i);
 
-        void insertion_sort(T arr[], const int n);
+        void insertion_sort();
         void time_insertion_sort(const int n);
-        void asert_insertion_sort(T arr[], const int n);
+        void assert_insertion_sort(T arr[], const int n);
 };
 
 #include "AlgorithmsSorts.hpp"
