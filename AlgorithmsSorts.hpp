@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <iostream>
 
+
 template <typename T>
 void insertion_sort(T arr[], const int n)
 {
@@ -61,4 +62,23 @@ void time_insertion_sort(const int n)
     insertion_sort(arr,n);
     end = std::chrono::steady_clock::now();
     std::cout << "Average case: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "[ns]" << std::endl;
+}
+
+template <typename T>
+AlgorithmsSorts<T>::AlgorithmsSorts(const int size)
+{
+    n = size;
+    arr = new T[size];
+}
+
+template <typename T>
+AlgorithmsSorts<T>::~AlgorithmsSorts()
+{
+    delete[] arr;
+}
+
+template <typename T>
+T & AlgorithmsSorts<T>::operator[](const int i)
+{
+    return arr[i];
 }
