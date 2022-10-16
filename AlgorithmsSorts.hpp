@@ -1,5 +1,5 @@
 // Author: Payton Redemer
-// File:
+// File: AlgorithmsSorts.hpp
 // Purpose: Contains class functions for AlgorithmsSorts
 
 #include <chrono>
@@ -80,4 +80,19 @@ void time_insertion_sort(const int n)
     arr.insertion_sort();
     end = std::chrono::steady_clock::now();
     std::cout << "Average case: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "[ns]" << std::endl;
+}
+
+template <typename T>
+bool AlgorithmsSorts<T>::is_sorted(const int n)
+{
+    bool sorted = true;
+    for(int i = 1; i < n; i++)
+    {
+        if(arr[i] < arr[i - 1])
+        {
+            sorted = false;
+            break;
+        }
+    }
+    return sorted;
 }

@@ -32,10 +32,10 @@ class AlgorithmsSorts
         // Postcondition: Prints execution time of sort
         void time_insertion_sort(const int n);
 
-        // Purpose: Test insertion sort's precondition, postcondition, and invariant through asserts
-        // Precondition: arr is a non-empty with sortable elements
-        // Postcondition: arr is sorted in ascending order
-        void assert_insertion_sort();
+        // Purpose: Check if an array up to element n is sorted
+        // Precondition: n > 0
+        // Postcondition: Returns if sub-array is sorted
+        bool is_sorted(const int n);
 };
 
 #include "AlgorithmsSorts.hpp"
