@@ -1,6 +1,6 @@
 // Author: Payton Redemer
 // File: main.cpp
-// Purpose: main driver for Project 1
+// Purpose: main driver for Insertion Sort project
 
 #include "AlgorithmsSorts.h"
 #include <cstddef>
@@ -12,9 +12,9 @@
 int main()
 {
     srand(time(NULL));
-    int inputs[] = {10, 1000, 10000, 100000, 200000};
+    int inputs[] = {10, 1000, 10000, 100000, 200000, 500000};
 
-    for(int i = 0; i < 5; i++)
+    for(int i = 0; i < 6; i++)
     {
         time_insertion_sort(inputs[i]);
         std::cout << std::endl;
