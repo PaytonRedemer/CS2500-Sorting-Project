@@ -7,6 +7,7 @@
 #include <iostream>
 #include <cassert>
 #include <new>
+#include <type_traits>
 
 #define DEBUG 1 // Debug variable for asserts in insertion sort. 1 = DEBUG, 0 = No DEBUG
 
@@ -84,6 +85,35 @@ void AlgorithmsSorts<T>::insertion_sort()
     #if DEBUG == 1
         assert(this->is_sorted(n));
     #endif
+}
+
+template <typename T>
+int AlgorithmsSorts<T>::partition(const int p, const int r)
+{
+    T x = arr[r];
+    int i = p - 1;
+    for(int j = p; j < r; j++) // j < r -1 maybe
+    {
+        if(arr[j] <= x)
+        {
+            i = i + 1;
+            std::swap(arr[i],arr[j]);
+        }
+    }
+    std::swap(arr[i+1],arr[r]);
+    return i + 1;
+}
+
+template <typename T>
+void AlgorithmsSorts<T>::quick_sort(const int p, const int r)
+{
+    if(p < r)
+    {
+        int q = this->partition(p,r);
+        this->quick_sort(p,q-1);
+        this->quick_sort(q+1,r);
+    }
+
 }
 
 void time_insertion_sort(const int n)
