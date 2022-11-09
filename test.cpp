@@ -24,7 +24,7 @@ int main()
         test1[i] = i;
 
     print_array(test1);
-    test1.quick_sort(0,size-1);
+    test1.heap_sort();
     std::cout << test1.is_sorted(0) << std::endl;
     print_array(test1);
     std::cout << std::endl;
@@ -35,7 +35,7 @@ int main()
         test1[i] = test1.length() - i;
 
     print_array(test1);
-    test1.quick_sort(0,size-1);
+    test1.heap_sort();
     std::cout << test1.is_sorted(0) << std::endl;
     print_array(test1);
     std::cout << std::endl;
@@ -46,7 +46,7 @@ int main()
         test1[i] = 5;
 
     print_array(test1);
-    test1.quick_sort(0,size-1);
+    test1.heap_sort();
     std::cout << test1.is_sorted(0) << std::endl;
     print_array(test1);
     std::cout << std::endl;
@@ -57,7 +57,7 @@ int main()
         test1[i] = i % 2;
 
     print_array(test1);
-    test1.quick_sort(0,size-1);
+    test1.heap_sort();
     std::cout << test1.is_sorted(0) << std::endl;
     print_array(test1);
     std::cout << std::endl;
@@ -68,7 +68,7 @@ int main()
         test1[i] = rand() % test1.length();
 
     print_array(test1);
-    test1.quick_sort(0,size-1);
+    test1.heap_sort();
     std::cout << test1.is_sorted(0) << std::endl;
     print_array(test1);
     std::cout << std::endl;

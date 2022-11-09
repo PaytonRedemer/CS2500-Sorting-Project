@@ -12,6 +12,7 @@ class AlgorithmsSorts
     private:
         T *arr = nullptr;
         int n;
+        int heap_size;
 
     public:
         // Constructor
@@ -62,6 +63,12 @@ class AlgorithmsSorts
         int parent(const int i);
         int left(const int i);
         int right(const int i);
+
+        void max_heapify(const int i);
+
+        void build_max_heap();
+
+        void heap_sort();
 
         /*
             Timing functions

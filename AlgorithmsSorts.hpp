@@ -2,6 +2,7 @@
 // File: AlgorithmsSorts.hpp
 // Purpose: Contains class functions for AlgorithmsSorts
 
+#include "AlgorithmsSorts.h"
 #include <chrono>
 #include <cstdlib>
 #include <iostream>
@@ -21,6 +22,7 @@ AlgorithmsSorts<T>::AlgorithmsSorts(const int size)
         if(size <= 0)
             throw std::bad_array_new_length();
         n = size;
+        heap_size = size;
         arr = new T[size];
     }
 
@@ -129,6 +131,50 @@ int left(const int i)
 int right(const int i)
 {
     return (2 * i) + 1;
+}
+
+
+template <typename T>
+void AlgorithmsSorts<T>::max_heapify(const int i)
+{
+    int l = left(i);
+    int r = right(i);
+    int largest;
+    
+    if(l <= heap_size && arr[l] > arr[i])
+        largest = l;
+    else
+        largest = i;
+
+    if(r <= heap_size && arr[r] > arr[largest])
+        largest = r;
+    
+    if(largest != i)
+    {
+        std::swap(arr[i],arr[largest]);
+        max_heapify(largest);
+    }
+}
+
+
+template <typename T>
+void AlgorithmsSorts<T>::build_max_heap()
+{
+    heap_size = n;
+    for(int i = floor(n/2); i > 0; i--)
+        max_heapify(i);
+}
+
+template <typename T>
+void AlgorithmsSorts<T>::heap_sort()
+{
+    this->build_max_heap();
+    for(int i = n; i > 1; i--)
+    {
+        std::swap(arr[1], arr[i]);
+        heap_size = heap_size - 1;
+        max_heapify(1);
+    }
 }
 
 void time_insertion_sort(const int n)
