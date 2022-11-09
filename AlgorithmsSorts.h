@@ -41,6 +41,10 @@ class AlgorithmsSorts
             Merge Sort
         */
 
+        void merge(const int p, const int q, const int r);
+
+        void merge_sort(const int p, const int r);
+
         // TODO: Update docs for quicksort + partition
         /*
             Quick Sort

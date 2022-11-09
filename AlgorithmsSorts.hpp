@@ -10,6 +10,7 @@
 #include <new>
 #include <type_traits>
 #include <math.h>
+#include <climits>
 
 #define DEBUG 1 // Debug variable for asserts in insertion sort. 1 = DEBUG, 0 = No DEBUG
 
@@ -88,6 +89,55 @@ void AlgorithmsSorts<T>::insertion_sort()
     #if DEBUG == 1
         assert(this->is_sorted(n));
     #endif
+}
+
+template <typename T>
+void AlgorithmsSorts<T>::merge(const int p, const int q, const int r)
+{
+    int n1 = q - p + 1;
+    int n2 = r - q;
+    T L[n1 + 1];
+    T R[n2 + 1];
+
+    for(int i = 0; i < n1; i++)
+        L[i] = arr[p + i - 1];
+
+    for(int j = 0; j < n1; j++)
+        R[j] = arr[q + j];
+
+    L[n1] = INT_MAX;
+    R[n2] = INT_MAX;
+
+    int i = 0;
+    int j = 0;
+
+    for(int k = p; k < r; k++)
+    {
+        if(L[i] <= R[j])
+        {
+            arr[k] = L[i];
+            i = i + 1;
+        }
+        else
+        {
+            arr[k] = R[j];
+            j = j + 1;
+        }
+    }
+}
+
+template <typename T>
+void AlgorithmsSorts<T>::merge_sort(const int p, const int r)
+{
+    int q;
+    if(p < r)
+    {
+        q = floor((p + r) / 2);
+        merge_sort(p,q);
+        merge_sort(q+1,r);
+        merge(p,q,r);
+        
+    }
 }
 
 template <typename T>
