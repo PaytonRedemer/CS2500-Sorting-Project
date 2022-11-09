@@ -56,6 +56,14 @@ class AlgorithmsSorts
         void quick_sort(const int p, const int r);
 
         /*
+            Heap Sort
+        */
+
+        int parent(const int i);
+        int left(const int i);
+        int right(const int i);
+
+        /*
             Timing functions
         */
         

@@ -8,6 +8,7 @@
 #include <cassert>
 #include <new>
 #include <type_traits>
+#include <math.h>
 
 #define DEBUG 1 // Debug variable for asserts in insertion sort. 1 = DEBUG, 0 = No DEBUG
 
@@ -114,6 +115,20 @@ void AlgorithmsSorts<T>::quick_sort(const int p, const int r)
         this->quick_sort(q+1,r);
     }
 
+}
+
+int parent(const int i)
+{
+    return floor(i / 2);
+}
+int left(const int i)
+{
+    return 2 * i;
+}
+
+int right(const int i)
+{
+    return (2 * i) + 1;
 }
 
 void time_insertion_sort(const int n)
