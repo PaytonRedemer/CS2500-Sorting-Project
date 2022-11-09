@@ -27,12 +27,24 @@ class AlgorithmsSorts
         // Allow access to arr with bracket operators
         T & operator[](const int i);
 
+        /*
+            Insertion Sort
+        */
+
         // Purpose: Sort arr in ascending order
         // Precondition: arr is a non-empty array with sortable elements
         // Postcondition: arr is sorted in ascending order
         void insertion_sort();
 
+        /*
+            Merge Sort
+        */
+
         // TODO: Update docs for quicksort + partition
+        /*
+            Quick Sort
+        */
+
         // Purpose: Sort arr in ascending order
         // Precondition: arr is a non-empty array with sortable elements
         // Postcondition: arr is sorted in ascending order
@@ -43,6 +55,10 @@ class AlgorithmsSorts
         // Postcondition: arr is sorted in ascending order
         void quick_sort(const int p, const int r);
 
+        /*
+            Timing functions
+        */
+        
         // Purpose: Time insertion sort algorithm
         // Precondition: n > 0
         // Postcondition: Prints execution time of sort
