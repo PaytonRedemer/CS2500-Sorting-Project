@@ -100,10 +100,10 @@ void AlgorithmsSorts<T>::merge(const int p, const int q, const int r)
     T R[n2 + 1];
 
     for(int i = 0; i < n1; i++)
-        L[i] = arr[p + i - 1];
+        L[i] = arr[p + i];
 
     for(int j = 0; j < n1; j++)
-        R[j] = arr[q + j];
+        R[j] = arr[q + j + 1];
 
     L[n1] = INT_MAX;
     R[n2] = INT_MAX;
@@ -111,7 +111,7 @@ void AlgorithmsSorts<T>::merge(const int p, const int q, const int r)
     int i = 0;
     int j = 0;
 
-    for(int k = p; k < r; k++)
+    for(int k = p; k <= r; k++)
     {
         if(L[i] <= R[j])
         {
