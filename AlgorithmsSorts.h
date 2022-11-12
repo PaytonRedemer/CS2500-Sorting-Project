@@ -43,6 +43,9 @@ class AlgorithmsSorts
 
         void merge(const int p, const int q, const int r);
 
+        // Purpose: Sort arr in ascending order using the mergesort algorithm
+        // Precondition: arr is a non-empty array with sortable elements
+        // Postcondition: arr is sorted in ascending order
         void merge_sort(const int p, const int r);
 
         /*
@@ -91,6 +94,12 @@ class AlgorithmsSorts
         // Precondition: n > 0
         // Postcondition: Prints execution time of sort
         void time_insertion_sort(const int n);
+
+
+        // Purpose: Time merge sort algorithm
+        // Precondition: n > 0
+        // Postcondition: Prints execution time of sort
+        void time_merge_sort(const int n);
 
         // Purpose: Check if an array up to element n is sorted
         // Precondition: n > 0
