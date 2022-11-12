@@ -12,7 +12,7 @@ class AlgorithmsSorts
     private:
         T *arr = nullptr;
         int n;
-        int heap_size;
+        int heap_size; // needed for heap sort
 
     public:
         // Constructor
@@ -32,7 +32,7 @@ class AlgorithmsSorts
             Insertion Sort
         */
 
-        // Purpose: Sort arr in ascending order
+        // Purpose: Sort arr in ascending order using the insertion sort algorithm
         // Precondition: arr is a non-empty array with sortable elements
         // Postcondition: arr is sorted in ascending order
         void insertion_sort();
@@ -100,6 +100,17 @@ class AlgorithmsSorts
         // Precondition: n > 0
         // Postcondition: Prints execution time of sort
         void time_merge_sort(const int n);
+
+        
+        // Purpose: Time quick sort algorithm
+        // Precondition: n > 0
+        // Postcondition: Prints execution time of sort
+        void time_quick_sort(const int n);
+        
+        // Purpose: Time heap sort algorithm
+        // Precondition: n > 0
+        // Postcondition: Prints execution time of sort
+        void time_heap_sort(const int n);
 
         // Purpose: Check if an array up to element n is sorted
         // Precondition: n > 0
