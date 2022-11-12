@@ -50,13 +50,13 @@ class AlgorithmsSorts
             Quick Sort
         */
 
-        // Purpose: Sort arr in ascending order
-        // Precondition: arr is a non-empty array with sortable elements
-        // Postcondition: arr is sorted in ascending order
+        // Purpose: Helper function to assist quick_sort function
+        // Precondition: 0 <= p <= n-1, 0 <= p <= n-1, arr is a non-empty array with sortable elements
+        // Postcondition: ?
         int partition(const int p, const int r);
 
-        // Purpose: Sort arr in ascending order
-        // Precondition: arr is a non-empty array with sortable elements
+        // Purpose: Sort arr in ascending order using the quicksort algorithm
+        // Precondition: 0 <= p <= n-1, 0 <= p <= n-1, arr is a non-empty array with sortable elements
         // Postcondition: arr is sorted in ascending order
         void quick_sort(const int p, const int r);
 
