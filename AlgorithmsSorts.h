@@ -64,14 +64,24 @@ class AlgorithmsSorts
             Heap Sort
         */
 
+        // Helper functions to return the index of the parent,left,or right node respective to i
         int parent(const int i);
         int left(const int i);
         int right(const int i);
 
+        // Purpose: Convert arr so that subtree rooted at i obeys the max-heap property
+        // Precondition: arr[i+1,i+2,...,n] are roots of valid heaps
+        // Postcondition: arr[i,i+1,i+2,...,n] are roots of valid heaps
         void max_heapify(const int i);
 
+        // Purpose: Convert arr into a max heap
+        // Precondition: arr is a non-empty array with sortable elements
+        // Postcondition: arr is a valid heap
         void build_max_heap();
 
+        // Purpose: Sort arr in ascending order using the heapsort algorithm
+        // Precondition: arr is a non-empty array with sortable elements
+        // Postcondition: arr is sorted in ascending order
         void heap_sort();
 
         /*
