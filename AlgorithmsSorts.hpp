@@ -23,7 +23,7 @@ AlgorithmsSorts<T>::AlgorithmsSorts(const int size)
         if(size <= 0)
             throw std::bad_array_new_length();
         n = size;
-        heap_size = size;
+        heap_size = 0;
         arr = new T[size];
     }
 
@@ -175,12 +175,12 @@ int parent(const int i)
 }
 int left(const int i)
 {
-    return 2 * i;
+    return (2 * i) + 1;
 }
 
 int right(const int i)
 {
-    return (2 * i) + 1;
+    return (2 * i) + 2;
 }
 
 
@@ -211,7 +211,7 @@ template <typename T>
 void AlgorithmsSorts<T>::build_max_heap()
 {
     heap_size = n;
-    for(int i = floor(n/2); i > 0; i--)
+    for(int i = floor(n/2); i >= 0; i--)
         max_heapify(i);
 }
 
@@ -219,11 +219,11 @@ template <typename T>
 void AlgorithmsSorts<T>::heap_sort()
 {
     this->build_max_heap();
-    for(int i = n; i > 1; i--)
+    for(int i = n - 1; i > 0; i--)
     {
-        std::swap(arr[1], arr[i]);
+        std::swap(arr[0], arr[i]);
         heap_size = heap_size - 1;
-        max_heapify(1);
+        max_heapify(0);
     }
 }
 
