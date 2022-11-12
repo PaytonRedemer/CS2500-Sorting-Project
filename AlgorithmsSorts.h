@@ -45,19 +45,18 @@ class AlgorithmsSorts
 
         void merge_sort(const int p, const int r);
 
-        // TODO: Update docs for quicksort + partition
         /*
             Quick Sort
         */
 
         // Purpose: Helper function to assist quick_sort function
         // Precondition: 0 <= p <= n-1, 0 <= p <= n-1, arr is a non-empty array with sortable elements
-        // Postcondition: ?
+        // Postcondition: The element at r is now at the correct index if arr is sorted
         int partition(const int p, const int r);
 
         // Purpose: Sort arr in ascending order using the quicksort algorithm
         // Precondition: 0 <= p <= n-1, 0 <= p <= n-1, arr is a non-empty array with sortable elements
-        // Postcondition: arr is sorted in ascending order
+        // Postcondition: arr is sorted in ascending order and is a permutation of the original items
         void quick_sort(const int p, const int r);
 
         /*

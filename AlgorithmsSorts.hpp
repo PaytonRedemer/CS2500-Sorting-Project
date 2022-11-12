@@ -145,7 +145,7 @@ int AlgorithmsSorts<T>::partition(const int p, const int r)
 {
     T x = arr[r];
     int i = p - 1;
-    for(int j = p; j < r; j++) // j < r -1 maybe
+    for(int j = p; j < r; j++)
     {
         if(arr[j] <= x)
         {
