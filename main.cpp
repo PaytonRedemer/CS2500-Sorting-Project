@@ -16,7 +16,7 @@ int main()
 
     for(int i = 0; i < 7; i++)
     {
-        time_insertion_sort(inputs[i]);
+        time_quick_sort(inputs[i]);
         std::cout << std::endl;
     }
 }

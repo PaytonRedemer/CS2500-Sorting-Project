@@ -136,7 +136,6 @@ void AlgorithmsSorts<T>::merge_sort(const int p, const int r)
         merge_sort(p,q);
         merge_sort(q+1,r);
         merge(p,q,r);
-        
     }
 }
 
@@ -169,26 +168,11 @@ void AlgorithmsSorts<T>::quick_sort(const int p, const int r)
 
 }
 
-int parent(const int i)
-{
-    return floor(i / 2);
-}
-int left(const int i)
-{
-    return (2 * i) + 1;
-}
-
-int right(const int i)
-{
-    return (2 * i) + 2;
-}
-
-
 template <typename T>
 void AlgorithmsSorts<T>::max_heapify(const int i)
 {
-    int l = left(i);
-    int r = right(i);
+    int l = 2 * i + 1;
+    int r = 2 * i + 2;
     int largest;
     
     if(l <= heap_size && arr[l] > arr[i])
@@ -274,34 +258,34 @@ void time_merge_sort(const int n)
     std::cout << "For n = " << n << std::endl;
 
 
-    // Best case for insertion sort
+    // Best case for merge sort
     // input array is already sorted
     for(int i = 0; i < n; i++)
         arr[i] = i;
     
     begin = std::chrono::steady_clock::now();
-    arr.insertion_sort();
+    arr.merge_sort(0, n - 1);
     end = std::chrono::steady_clock::now();
     std::cout << "Best case: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
     
     
-    // Worst case for insertion sort
+    // Worst case for merge sort
     // input array is sorted in the opposite intended sort
     for(int i = 0; i < n; i++)
         arr[i] = n - i;
     
     begin = std::chrono::steady_clock::now();
-    arr.insertion_sort();
+    arr.merge_sort(0, n - 1);
     end = std::chrono::steady_clock::now();
     std::cout << "Worst case: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
 
-    // "Average case" for insertion sort
+    // "Average case" for merge sort
     // average is hard to quantify our average case will be a random array
     for(int i = 0; i < n; i++)
         arr[i] = rand() % n;
     
     begin = std::chrono::steady_clock::now();
-    arr.insertion_sort();
+    arr.merge_sort(0, n - 1);
     end = std::chrono::steady_clock::now();
     std::cout << "Average case: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
 }
@@ -314,34 +298,35 @@ void time_quick_sort(const int n)
     std::cout << "For n = " << n << std::endl;
 
 
-    // Best case for insertion sort
-    // input array is already sorted
+    // Best case for quick sort
+    // input array is not sorted (random)
     for(int i = 0; i < n; i++)
-        arr[i] = i;
+        arr[i] = rand() % n;
     
     begin = std::chrono::steady_clock::now();
-    arr.insertion_sort();
+    arr.quick_sort(0, n - 1);
     end = std::chrono::steady_clock::now();
     std::cout << "Best case: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
     
     
-    // Worst case for insertion sort
-    // input array is sorted in the opposite intended sort
+    // Worst case for quick sort
+    // input array is sorted or opposite intended sort
+    // We'll use sorted
     for(int i = 0; i < n; i++)
-        arr[i] = n - i;
+        arr[i] = i;
     
     begin = std::chrono::steady_clock::now();
-    arr.insertion_sort();
+    arr.quick_sort(0, n - 1);
     end = std::chrono::steady_clock::now();
     std::cout << "Worst case: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
 
-    // "Average case" for insertion sort
+    // "Average case" for quick sort
     // average is hard to quantify our average case will be a random array
     for(int i = 0; i < n; i++)
         arr[i] = rand() % n;
     
     begin = std::chrono::steady_clock::now();
-    arr.insertion_sort();
+    arr.quick_sort(0, n - 1);
     end = std::chrono::steady_clock::now();
     std::cout << "Average case: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
 }
@@ -354,34 +339,34 @@ void time_heap_sort(const int n)
     std::cout << "For n = " << n << std::endl;
 
 
-    // Best case for insertion sort
-    // input array is already sorted
+    // Best case for heap sort
+    // input array's elements are the same value
     for(int i = 0; i < n; i++)
         arr[i] = i;
     
     begin = std::chrono::steady_clock::now();
-    arr.insertion_sort();
+    arr.heap_sort();
     end = std::chrono::steady_clock::now();
     std::cout << "Best case: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
     
     
-    // Worst case for insertion sort
-    // input array is sorted in the opposite intended sort
+    // Worst case for heap sort
+    // input array's elements are all unique values
     for(int i = 0; i < n; i++)
-        arr[i] = n - i;
+        arr[i] = i;
     
     begin = std::chrono::steady_clock::now();
-    arr.insertion_sort();
+    arr.heap_sort();
     end = std::chrono::steady_clock::now();
     std::cout << "Worst case: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
 
-    // "Average case" for insertion sort
+    // "Average case" for heap sort
     // average is hard to quantify our average case will be a random array
     for(int i = 0; i < n; i++)
         arr[i] = rand() % n;
     
     begin = std::chrono::steady_clock::now();
-    arr.insertion_sort();
+    arr.heap_sort();
     end = std::chrono::steady_clock::now();
     std::cout << "Average case: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
 }

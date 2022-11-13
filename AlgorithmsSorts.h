@@ -66,11 +66,6 @@ class AlgorithmsSorts
             Heap Sort
         */
 
-        // Helper functions to return the index of the parent,left,or right node respective to i
-        int parent(const int i);
-        int left(const int i);
-        int right(const int i);
-
         // Purpose: Convert arr so that subtree rooted at i obeys the max-heap property
         // Precondition: arr[i+1,i+2,...,n] are roots of valid heaps
         // Postcondition: arr[i,i+1,i+2,...,n] are roots of valid heaps
