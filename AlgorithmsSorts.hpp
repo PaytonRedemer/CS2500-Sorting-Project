@@ -12,7 +12,7 @@
 #include <math.h>
 #include <climits>
 
-#define DEBUG 1 // Debug variable for asserts in insertion sort. 1 = DEBUG, 0 = No DEBUG
+#define DEBUG 0 // Debug variable for asserts in insertion sort. 1 = DEBUG, 0 = No DEBUG
 
 template <typename T>
 AlgorithmsSorts<T>::AlgorithmsSorts(const int size)
@@ -258,36 +258,33 @@ void time_merge_sort(const int n)
     std::cout << "For n = " << n << std::endl;
 
 
-    // Best case for merge sort
     // input array is already sorted
     for(int i = 0; i < n; i++)
         arr[i] = i;
     
     begin = std::chrono::steady_clock::now();
-    arr.merge_sort(0, n - 1);
+    arr.merge_sort(0,n-1);
     end = std::chrono::steady_clock::now();
-    std::cout << "Best case: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
+    std::cout << "Sorted: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
     
     
-    // Worst case for merge sort
     // input array is sorted in the opposite intended sort
     for(int i = 0; i < n; i++)
         arr[i] = n - i;
     
     begin = std::chrono::steady_clock::now();
-    arr.merge_sort(0, n - 1);
+    arr.merge_sort(0,n-1);
     end = std::chrono::steady_clock::now();
-    std::cout << "Worst case: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
+    std::cout << "Reverse: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
 
-    // "Average case" for merge sort
-    // average is hard to quantify our average case will be a random array
+    // random input array 
     for(int i = 0; i < n; i++)
         arr[i] = rand() % n;
     
     begin = std::chrono::steady_clock::now();
-    arr.merge_sort(0, n - 1);
+    arr.merge_sort(0,n-1);
     end = std::chrono::steady_clock::now();
-    std::cout << "Average case: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
+    std::cout << "Random: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
 }
 
 
@@ -298,37 +295,33 @@ void time_quick_sort(const int n)
     std::cout << "For n = " << n << std::endl;
 
 
-    // Best case for quick sort
-    // input array is not sorted (random)
-    for(int i = 0; i < n; i++)
-        arr[i] = rand() % n;
-    
-    begin = std::chrono::steady_clock::now();
-    arr.quick_sort(0, n - 1);
-    end = std::chrono::steady_clock::now();
-    std::cout << "Best case: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
-    
-    
-    // Worst case for quick sort
-    // input array is sorted or opposite intended sort
-    // We'll use sorted
+    // input array is already sorted
     for(int i = 0; i < n; i++)
         arr[i] = i;
     
     begin = std::chrono::steady_clock::now();
-    arr.quick_sort(0, n - 1);
+    arr.quick_sort(0,n-1);
     end = std::chrono::steady_clock::now();
-    std::cout << "Worst case: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
+    std::cout << "Sorted: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
+    
+    
+    // input array is sorted in the opposite intended sort
+    for(int i = 0; i < n; i++)
+        arr[i] = n - i;
+    
+    begin = std::chrono::steady_clock::now();
+    arr.quick_sort(0,n-1);
+    end = std::chrono::steady_clock::now();
+    std::cout << "Reverse: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
 
-    // "Average case" for quick sort
-    // average is hard to quantify our average case will be a random array
+    // random input array 
     for(int i = 0; i < n; i++)
         arr[i] = rand() % n;
     
     begin = std::chrono::steady_clock::now();
-    arr.quick_sort(0, n - 1);
+    arr.quick_sort(0,n-1);
     end = std::chrono::steady_clock::now();
-    std::cout << "Average case: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
+    std::cout << "Random: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
 }
 
 
@@ -339,36 +332,33 @@ void time_heap_sort(const int n)
     std::cout << "For n = " << n << std::endl;
 
 
-    // Best case for heap sort
-    // input array's elements are the same value
+    // input array is already sorted
     for(int i = 0; i < n; i++)
         arr[i] = i;
     
     begin = std::chrono::steady_clock::now();
     arr.heap_sort();
     end = std::chrono::steady_clock::now();
-    std::cout << "Best case: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
+    std::cout << "Sorted: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
     
     
-    // Worst case for heap sort
-    // input array's elements are all unique values
+    // input array is sorted in the opposite intended sort
     for(int i = 0; i < n; i++)
-        arr[i] = i;
+        arr[i] = n - i;
     
     begin = std::chrono::steady_clock::now();
     arr.heap_sort();
     end = std::chrono::steady_clock::now();
-    std::cout << "Worst case: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
+    std::cout << "Reverse: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
 
-    // "Average case" for heap sort
-    // average is hard to quantify our average case will be a random array
+    // random input array 
     for(int i = 0; i < n; i++)
         arr[i] = rand() % n;
     
     begin = std::chrono::steady_clock::now();
     arr.heap_sort();
     end = std::chrono::steady_clock::now();
-    std::cout << "Average case: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
+    std::cout << "Random: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
 }
 
 template <typename T>

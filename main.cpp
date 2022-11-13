@@ -14,9 +14,24 @@ int main()
     srand(time(NULL));
     int inputs[] = {10, 100,1000, 10000, 100000, 200000, 500000};
 
+    std::cout << "Merge sort:" << std::endl;
+    for(int i = 0; i < 7; i++)
+    {
+        time_merge_sort(inputs[i]);
+        std::cout << std::endl;
+    }
+
+    std::cout << "Quick sort:" << std::endl;
     for(int i = 0; i < 7; i++)
     {
         time_quick_sort(inputs[i]);
+        std::cout << std::endl;
+    }
+
+    std::cout << "Heap sort:" << std::endl;
+    for(int i = 0; i < 7; i++)
+    {
+        time_heap_sort(inputs[i]);
         std::cout << std::endl;
     }
 }
