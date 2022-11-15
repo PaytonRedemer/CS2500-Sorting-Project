@@ -82,6 +82,21 @@ class AlgorithmsSorts
         void heap_sort();
 
         /*
+            Modified Quicksort
+        */
+
+        // Purpose: Helper function to assist quick_sort function
+        // Precondition: 0 <= p <= n-1, 0 <= p <= n-1, arr is a non-empty array with sortable elements
+        // Postcondition: The element at r is now at the correct index if arr is sorted
+        int randomized_partition(const int p, const int r);
+
+        // Purpose: Sort arr in ascending order using the modified quicksort algorithm
+        // Precondition: 0 <= p <= n-1, 0 <= p <= n-1, arr is a non-empty array with sortable elements
+        // Postcondition: arr is sorted in ascending order and is a permutation of the original items
+        void modified_quick_sort(const int p, const int r);
+
+
+        /*
             Timing functions
         */
         

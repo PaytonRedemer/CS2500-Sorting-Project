@@ -111,8 +111,14 @@ void AlgorithmsSorts<T>::merge(const int p, const int q, const int r)
     int i = 0;
     int j = 0;
 
+    #if DEBUG == 1
+        assert(p < r);
+    #endif
     for(int k = p; k <= r; k++)
     {
+        #if DEBUG == 1
+            assert(this->is_sorted(k));
+        #endif       
         if(L[i] <= R[j])
         {
             arr[k] = L[i];
@@ -123,7 +129,13 @@ void AlgorithmsSorts<T>::merge(const int p, const int q, const int r)
             arr[k] = R[j];
             j = j + 1;
         }
+        #if DEBUG == 1
+            assert(this->is_sorted(k));
+        #endif       
     }
+    #if DEBUG == 1
+        assert(this->is_sorted(p));
+    #endif       
 }
 
 template <typename T>
@@ -175,12 +187,12 @@ void AlgorithmsSorts<T>::max_heapify(const int i)
     int r = 2 * i + 2;
     int largest;
     
-    if(l <= heap_size && arr[l] > arr[i])
+    if(l < heap_size && arr[l] > arr[i])
         largest = l;
     else
         largest = i;
 
-    if(r <= heap_size && arr[r] > arr[largest])
+    if(r < heap_size && arr[r] > arr[largest])
         largest = r;
     
     if(largest != i)
@@ -208,6 +220,25 @@ void AlgorithmsSorts<T>::heap_sort()
         std::swap(arr[0], arr[i]);
         heap_size = heap_size - 1;
         max_heapify(0);
+    }
+}
+
+template <typename T>
+int AlgorithmsSorts<T>::randomized_partition(const int p, const int r)
+{
+    int i = rand();
+    std::swap(arr[r], arr[i]);
+    return partition(p,r);
+}
+
+template <typename T>
+void AlgorithmsSorts<T>::modified_quick_sort(const int p, const int r)
+{
+    if(p < r)
+    {
+        int q = this->randomized_partition(p,r);
+        this->modified_quick_sort(p, q-1);
+        this->modified_quick_sort(q+1,r);
     }
 }
 
