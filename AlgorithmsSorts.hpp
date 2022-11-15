@@ -226,7 +226,7 @@ void AlgorithmsSorts<T>::heap_sort()
 template <typename T>
 int AlgorithmsSorts<T>::randomized_partition(const int p, const int r)
 {
-    int i = rand();
+    int i = rand() % r + p;
     std::swap(arr[r], arr[i]);
     return partition(p,r);
 }
