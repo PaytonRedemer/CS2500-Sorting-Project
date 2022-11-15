@@ -226,7 +226,7 @@ void AlgorithmsSorts<T>::heap_sort()
 template <typename T>
 int AlgorithmsSorts<T>::randomized_partition(const int p, const int r)
 {
-    int i = rand() % r + p;
+    int i = p + rand() % (r - p);
     std::swap(arr[r], arr[i]);
     return partition(p,r);
 }
@@ -355,7 +355,6 @@ void time_quick_sort(const int n)
     std::cout << "Random: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
 }
 
-
 void time_heap_sort(const int n)
 {
     AlgorithmsSorts<int> arr(n); 
@@ -388,6 +387,42 @@ void time_heap_sort(const int n)
     
     begin = std::chrono::steady_clock::now();
     arr.heap_sort();
+    end = std::chrono::steady_clock::now();
+    std::cout << "Random: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
+}
+
+void time_modified_quick_sort(const int n)
+{
+    AlgorithmsSorts<int> arr(n); 
+    std::chrono::steady_clock::time_point begin, end; // declare variables for timing sorts
+    std::cout << "For n = " << n << std::endl;
+
+
+    // input array is already sorted
+    for(int i = 0; i < n; i++)
+        arr[i] = i;
+    
+    begin = std::chrono::steady_clock::now();
+    arr.modified_quick_sort(0,n-1);
+    end = std::chrono::steady_clock::now();
+    std::cout << "Sorted: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
+    
+    
+    // input array is sorted in the opposite intended sort
+    for(int i = 0; i < n; i++)
+        arr[i] = n - i;
+    
+    begin = std::chrono::steady_clock::now();
+    arr.modified_quick_sort(0,n-1);
+    end = std::chrono::steady_clock::now();
+    std::cout << "Reverse: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
+
+    // random input array 
+    for(int i = 0; i < n; i++)
+        arr[i] = rand() % n;
+    
+    begin = std::chrono::steady_clock::now();
+    arr.modified_quick_sort(0,n-1);
     end = std::chrono::steady_clock::now();
     std::cout << "Random: " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "ns" << std::endl;
 }

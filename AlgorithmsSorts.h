@@ -122,6 +122,11 @@ class AlgorithmsSorts
         // Postcondition: Prints execution time of sort
         void time_heap_sort(const int n);
 
+        // Purpose: Time modified quick sort algorithm
+        // Precondition: n > 0
+        // Postcondition: Prints execution time of sort
+        void time_modified_quick_sort(const int n);
+
         // Purpose: Check if an array up to element n is sorted
         // Precondition: n > 0
         // Postcondition: Returns if sub-array is sorted
