@@ -36,11 +36,18 @@ int main()
         std::cout << std::endl;
     }
 
-
     std::cout << "Modified Quick sort:" << std::endl;
     for(int i = 0; i < size; i++)
     {
         time_modified_quick_sort(inputs[i]);
+        std::cout << std::endl;
+    }
+
+
+    std::cout << "Insertion sort:" << std::endl;
+    for(int i = 0; i < 7; i++)
+    {
+        time_insertion_sort(inputs[i]);
         std::cout << std::endl;
     }
     
